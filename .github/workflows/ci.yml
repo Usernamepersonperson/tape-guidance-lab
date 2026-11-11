@@ -1,0 +1,63 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  core:
+    name: core (plain Python, no ROS)
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: pip install -e .[dev]
+      - run: ruff check .
+      - name: vcan0 (best effort; the SocketCAN tests skip if this fails)
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y -q "linux-modules-extra-$(uname -r)" || true
+          sudo modprobe vcan
+          sudo ip link add dev vcan0 type vcan
+          sudo ip link set up vcan0
+          ip -br link show vcan0
+      - run: python -m pytest -q -rs --durations=5
+      - name: Real-time frame rate (virtual bus, and vcan0 when present)
+        run: |
+          mkdir -p results
+          python -m agvlab live --interface virtual --channel ci --duration 10 | tee results/live_virtual.txt
+          if ip link show vcan0 > /dev/null 2>&1; then
+            python -m agvlab live --interface socketcan --channel vcan0 --duration 10 | tee results/live_vcan0.txt
+          fi
+      - name: Sweep smoke (two values per sweep)
+        run: python -m agvlab sweep --quick --seeds 2 --out results/sweep_quick.json
+      - uses: actions/upload-artifact@v4
+        if: matrix.python-version == '3.12'
+        with:
+          name: core-results
+          path: results/
+
+  ros2-jazzy:
+    name: ROS 2 Jazzy (own driver + simulator, closed loop)
+    runs-on: ubuntu-24.04
+    container:
+      image: ros:jazzy-ros-base
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the driver packages, run both junction choices
+        env:
+          REPO: ${{ github.workspace }}
+          OUT: ${{ github.workspace }}/results/ros
+        run: bash ros2/run_in_container.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ros-results
+          path: results/ros/

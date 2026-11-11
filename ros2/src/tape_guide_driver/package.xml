@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>tape_guide_driver</name>
+  <version>0.1.0</version>
+  <description>ROS 2 driver for the open tape-guide sensor CANopen profile (docs/PROTOCOL.md)</description>
+  <maintainer email="noreply@example.com">Victor Bonilla</maintainer>
+  <license>MIT</license>
+  <depend>rclpy</depend>
+  <depend>guide_msgs</depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

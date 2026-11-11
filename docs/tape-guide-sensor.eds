@@ -1,0 +1,463 @@
+[FileInfo]
+FileName=tape-guide-sensor.eds
+FileVersion=1
+Description=Open tape-guide sensor profile
+
+[DeviceInfo]
+VendorName=open profile (no vendor)
+ProductName=TGS-1 tape guide sensor
+NrOfRXPDO=0
+NrOfTXPDO=3
+
+[1000]
+ParameterName=Device type
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000000
+PDOMapping=0
+
+[1001]
+ParameterName=Error register
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=0
+PDOMapping=1
+
+[1008]
+ParameterName=Manufacturer device name
+ObjectType=0x7
+DataType=0x0009
+AccessType=const
+DefaultValue=TGS-1 tape guide sensor
+PDOMapping=0
+
+[1017]
+ParameterName=Producer heartbeat time (ms)
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=1000
+PDOMapping=0
+
+[1018]
+ParameterName=Record 1018h
+ObjectType=0x9
+SubNumber=4
+
+[1018sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+DataType=0x0005
+AccessType=const
+DefaultValue=3
+PDOMapping=0
+
+[1018sub1]
+ParameterName=Identity: vendor ID
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0 (unassigned)
+PDOMapping=0
+
+[1018sub2]
+ParameterName=Identity: product code
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000001
+PDOMapping=0
+
+[1018sub3]
+ParameterName=Identity: revision
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00010000
+PDOMapping=0
+
+[1800]
+ParameterName=Record 1800h
+ObjectType=0x9
+SubNumber=4
+
+[1800sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+DataType=0x0005
+AccessType=const
+DefaultValue=5
+PDOMapping=0
+
+[1800sub1]
+ParameterName=TPDO1 COB-ID
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=$NODEID+0x180
+PDOMapping=0
+
+[1800sub2]
+ParameterName=TPDO1 transmission type
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=254
+PDOMapping=0
+
+[1800sub5]
+ParameterName=TPDO1 event timer (ms)
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=10
+PDOMapping=0
+
+[1801]
+ParameterName=Record 1801h
+ObjectType=0x9
+SubNumber=4
+
+[1801sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+DataType=0x0005
+AccessType=const
+DefaultValue=5
+PDOMapping=0
+
+[1801sub1]
+ParameterName=TPDO2 COB-ID
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=$NODEID+0x280
+PDOMapping=0
+
+[1801sub2]
+ParameterName=TPDO2 transmission type
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=254
+PDOMapping=0
+
+[1801sub5]
+ParameterName=TPDO2 event timer (ms)
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=20
+PDOMapping=0
+
+[1802]
+ParameterName=Record 1802h
+ObjectType=0x9
+SubNumber=4
+
+[1802sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+DataType=0x0005
+AccessType=const
+DefaultValue=5
+PDOMapping=0
+
+[1802sub1]
+ParameterName=TPDO3 COB-ID
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=$NODEID+0x380
+PDOMapping=0
+
+[1802sub2]
+ParameterName=TPDO3 transmission type
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=254
+PDOMapping=0
+
+[1802sub5]
+ParameterName=TPDO3 event timer (ms)
+ObjectType=0x7
+DataType=0x0006
+AccessType=rw
+DefaultValue=50
+PDOMapping=0
+
+[2000]
+ParameterName=Record 2000h
+ObjectType=0x9
+SubNumber=7
+
+[2000sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+DataType=0x0005
+AccessType=const
+DefaultValue=6
+PDOMapping=0
+
+[2000sub1]
+ParameterName=Track: offset left (0.1 mm, left +)
+ObjectType=0x7
+DataType=0x0003
+AccessType=ro
+DefaultValue=-32768 = none
+PDOMapping=1
+
+[2000sub2]
+ParameterName=Track: offset right (0.1 mm, left +)
+ObjectType=0x7
+DataType=0x0003
+AccessType=ro
+DefaultValue=-32768 = none
+PDOMapping=1
+
+[2000sub3]
+ParameterName=Track: heading left (0.5 deg, ccw +)
+ObjectType=0x7
+DataType=0x0002
+AccessType=ro
+DefaultValue=0
+PDOMapping=1
+
+[2000sub4]
+ParameterName=Track: heading right (0.5 deg, ccw +)
+ObjectType=0x7
+DataType=0x0002
+AccessType=ro
+DefaultValue=0
+PDOMapping=1
+
+[2000sub5]
+ParameterName=Track: flags
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=0
+PDOMapping=1
+
+[2000sub6]
+ParameterName=Track: quality (0.5 %)
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=0
+PDOMapping=1
+
+[2001]
+ParameterName=Record 2001h
+ObjectType=0x9
+SubNumber=5
+
+[2001sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+DataType=0x0005
+AccessType=const
+DefaultValue=4
+PDOMapping=0
+
+[2001sub1]
+ParameterName=Marker: left along (0.05 mm, forward +)
+ObjectType=0x7
+DataType=0x0003
+AccessType=ro
+DefaultValue=-32768 = none
+PDOMapping=1
+
+[2001sub2]
+ParameterName=Marker: left lateral (0.05 mm, left +)
+ObjectType=0x7
+DataType=0x0003
+AccessType=ro
+DefaultValue=-32768 = none
+PDOMapping=1
+
+[2001sub3]
+ParameterName=Marker: right along (0.05 mm)
+ObjectType=0x7
+DataType=0x0003
+AccessType=ro
+DefaultValue=-32768 = none
+PDOMapping=1
+
+[2001sub4]
+ParameterName=Marker: right lateral (0.05 mm)
+ObjectType=0x7
+DataType=0x0003
+AccessType=ro
+DefaultValue=-32768 = none
+PDOMapping=1
+
+[2002]
+ParameterName=Sample counter
+ObjectType=0x7
+DataType=0x0006
+AccessType=ro
+DefaultValue=0
+PDOMapping=1
+
+[2100]
+ParameterName=Sensing width (mm)
+ObjectType=0x7
+DataType=0x0006
+AccessType=ro
+DefaultValue=150
+PDOMapping=0
+
+[2101]
+ParameterName=Invert offset sign
+ObjectType=0x7
+DataType=0x0005
+AccessType=rw
+DefaultValue=0
+PDOMapping=0
+
+[2102]
+ParameterName=Invert heading sign
+ObjectType=0x7
+DataType=0x0005
+AccessType=rw
+DefaultValue=0
+PDOMapping=0
+
+[1A00]
+ParameterName=TPDO1 mapping
+ObjectType=0x9
+SubNumber=7
+
+[1A00sub0]
+ParameterName=Number of mapped objects
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=6
+PDOMapping=0
+
+[1A00sub1]
+ParameterName=Mapped object 1
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20000110
+PDOMapping=0
+
+[1A00sub2]
+ParameterName=Mapped object 2
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20000210
+PDOMapping=0
+
+[1A00sub3]
+ParameterName=Mapped object 3
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20000308
+PDOMapping=0
+
+[1A00sub4]
+ParameterName=Mapped object 4
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20000408
+PDOMapping=0
+
+[1A00sub5]
+ParameterName=Mapped object 5
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20000508
+PDOMapping=0
+
+[1A00sub6]
+ParameterName=Mapped object 6
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20000608
+PDOMapping=0
+
+[1A01]
+ParameterName=TPDO2 mapping
+ObjectType=0x9
+SubNumber=5
+
+[1A01sub0]
+ParameterName=Number of mapped objects
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
+PDOMapping=0
+
+[1A01sub1]
+ParameterName=Mapped object 1
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20010110
+PDOMapping=0
+
+[1A01sub2]
+ParameterName=Mapped object 2
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20010210
+PDOMapping=0
+
+[1A01sub3]
+ParameterName=Mapped object 3
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20010310
+PDOMapping=0
+
+[1A01sub4]
+ParameterName=Mapped object 4
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20010410
+PDOMapping=0
+
+[1A02]
+ParameterName=TPDO3 mapping
+ObjectType=0x9
+SubNumber=3
+
+[1A02sub0]
+ParameterName=Number of mapped objects
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=2
+PDOMapping=0
+
+[1A02sub1]
+ParameterName=Mapped object 1
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x20020010
+PDOMapping=0
+
+[1A02sub2]
+ParameterName=Mapped object 2
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x10010008
+PDOMapping=0

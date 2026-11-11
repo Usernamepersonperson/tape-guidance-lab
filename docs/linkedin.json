@@ -1,0 +1,31 @@
+{
+ "claim": "Open tape-guidance stack for AGVs: own CANopen sensor profile, ROS 2 driver and line follower.",
+ "data_label": "simulated data",
+ "stats": [
+  [
+   "0.83 mm",
+   "median RMS tracking error",
+   "accent"
+  ],
+  [
+   "8 of 8",
+   "junction choices correct",
+   "green"
+  ],
+  [
+   "2.6 mm",
+   "worst stop error at marker",
+   "amber"
+  ]
+ ],
+ "limit": "No real sensor or tape: profile, noise and timing are my assumptions, robot is a simple model.",
+ "alt": "Dark plot of a tape layout with a fork, curve and two stop markers, and the paths a simulated robot drove along the tape to each marker.",
+ "hashtags": [
+  "#AGV",
+  "#ROS2",
+  "#CANopen",
+  "#Robotics",
+  "#OpenSource"
+ ],
+ "post": "A tape-following robot is usually tested on the robot, so the hard cases (a fork, a stop marker, a dropped frame, a slow CAN gateway) are the hardest to repeat.\n\nI built a magnetic-tape AGV guidance stack that runs without hardware: my own open CANopen profile for a tape guide sensor (frame layouts, fork, merge and marker flags, an object table), a simulator that emits it, a decoder library, a ROS 2 Jazzy driver and a line follower, closed in a loop with a simulated differential-drive robot.\n\nMeasured in simulation, 8 seeds: 0.83 mm median RMS tracking error, the right branch chosen 8 of 8 times, stops within 2.6 mm of the marker. Sweeps show where it breaks: stop accuracy fails at 200 ms of one-way latency, the junction choice at 300 ms, while 70% frame loss still gives about 1 mm RMS. In CI the same loop runs through the ROS 2 driver at 100 Hz.\n\nNot verified: there is no real sensor or tape behind this. The profile, noise figures and channel timing are my assumptions, and the robot is a kinematic model without slip.\n\nWhich failure would you want to reproduce on a bench first: lost tape, a fork, or a late stop marker?\n\nCode: https://github.com/Usernamepersonperson/tape-guidance-lab"
+}

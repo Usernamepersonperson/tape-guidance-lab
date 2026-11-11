@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tape-guidance-lab"
+version = "0.1.0"
+description = "Open magnetic-tape AGV guidance stack: guide-sensor CANopen profile, simulator, decoder, ROS 2 driver, line follower."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["numpy>=1.26", "python-can>=4.4"]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.8"]
+udp = ["msgpack>=1.0"]
+dev = ["pytest>=7.4", "ruff>=0.5", "matplotlib>=3.8", "msgpack>=1.0"]
+
+[project.scripts]
+agvlab = "agvlab.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["agvlab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:asyncio"  # a broken global pytest-asyncio must not break collection
+markers = ["slow: sweeps and real-time runs"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["ros2"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
