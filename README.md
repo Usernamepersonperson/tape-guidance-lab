@@ -147,4 +147,4 @@ docs/        PROTOCOL.md, tape-guide-sensor.eds, figure.png, post-figure.png, sw
 
 ## License
 
-MIT, see `LICENSE`. Copyright (c) 2026 Victor Bonilla.
+MIT, see `LICENSE`. Copyright (c) 2026 VB-Builds.

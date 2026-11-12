@@ -12,7 +12,7 @@ setup(
     ],
     install_requires=["setuptools"],
     zip_safe=True,
-    maintainer="Victor Bonilla",
+    maintainer="VB-Builds",
     maintainer_email="noreply@example.com",
     description="ROS 2 driver for the open tape-guide sensor CANopen profile",
     license="MIT",
